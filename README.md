@@ -1,6 +1,8 @@
 EasySplash
 ==========
 
+![CI](https://github.com/OSSystems/easysplash/workflows/CI/badge.svg)
+
 This is a simple program for animated splash screens using OpenGL ES for rendering. It consists
 of the main splash screen program (easysplash) and a small control program (easysplashctl).
 
