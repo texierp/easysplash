@@ -6,6 +6,17 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        init:
+          - "ENABLE_SYSTEMD_SUPPORT"
+          - "ENABLE_SYSVINIT_SUPPORT"
+
+        backend:
+          - "DISPLAY_TYPE_SWRENDER"
+
+        egl-platform:
+          - "EGL_PLATFORM_X11"
 
     steps:
     - uses: actions/checkout@v1
@@ -14,5 +25,5 @@ jobs:
     - name: make
       run: |
         mkdir build
-        cmake -S . -B build -DDISPLAY_TYPE_SWRENDER=1
+        cmake -S . -B build -D${{ matrix.init }}=1 -D${{ matrix.backend }}=1 -D${{ matrix.egl-platform }}=1
         cmake --build build
